@@ -4,12 +4,12 @@
   justify-content: space-around;
   align-items: center;
   /* background-color: #faebd7; */
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 .left {
   width: 40vw;
-  box-shadow: 0 0 5px black;
+  /* box-shadow: 0 0 10px black; */
 }
 
 .right {
@@ -28,5 +28,5 @@
 }
 
 #productDetails{
-    /* background-color: azure; */
+  margin-top: 2rem;
 }

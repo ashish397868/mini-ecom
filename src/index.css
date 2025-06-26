@@ -6,5 +6,10 @@
 .custom-scroll {
   height: 85vh;
   overflow-y: auto;
-  padding-right: 10px; /* Optional: helps avoid clipping scrollbar content */
+  padding-right: 10px;
+}
+
+.light-pink {
+  background-color: #ff6e86c9 !important; 
+  border: none !important;
 }

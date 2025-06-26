@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../../shared/apihandler";
 import Style from "./productDetail.module.css";
@@ -7,6 +7,7 @@ import { FaStar } from "react-icons/fa";
 import { RiSpeakAiFill } from "react-icons/ri";
 import Carousel from "react-bootstrap/Carousel";
 import { ClipLoader } from "react-spinners";
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const Index = () => {
   const { id } = useParams();
@@ -78,23 +79,23 @@ const Index = () => {
 
               <p className="mt-3">{product.description}</p>
 
-              <p className="mb-1 fs-6">
-              <span className="fw-bold">Rating : </span>  <FaStar className="text-warning" /> {product.rating}
-              </p>
-              <p className="mb-1 fs-6"><span className="fw-bold">Stock: </span> {product.stock}</p>
-              <p className="mb-1 fs-6"><span className="fw-bold">Dimensions: </span>
-                 {product.dimensions?.width}W × {product.dimensions?.height}H × {product.dimensions?.depth}D
-              </p>
-              <p className="mb-1 fs-6"><span className="fw-bold">Weight:</span>  {product.weight}</p>
-              <p className="mb-1 fs-6"><span className="fw-bold">Shipping:</span>  {product.shippingInformation}</p>
-              <p className="mb-1 fs-6"><span className="fw-bold">Warranty:</span>  {product.warrantyInformation}</p>
-              <p className="mb-1 fs-6"><span className="fw-bold">Return Policy:</span>  {product.returnPolicy}</p>
-              <p className="mb-1 fs-6"><span className="fw-bold">Sku: </span> {product.sku}</p>
+             <ListGroup className="mt-3">
+              <ListGroup.Item><strong>Rating:</strong> <FaStar className="text-warning" /> {product.rating}</ListGroup.Item>
+              <ListGroup.Item><strong>Stock:</strong> {product.stock}</ListGroup.Item>
+              <ListGroup.Item>
+                <strong>Dimensions:</strong> {product.dimensions?.width}W × {product.dimensions?.height}H × {product.dimensions?.depth}D
+              </ListGroup.Item>
+              <ListGroup.Item><strong>Weight:</strong> {product.weight}</ListGroup.Item>
+              <ListGroup.Item><strong>Shipping:</strong> {product.shippingInformation}</ListGroup.Item>
+              <ListGroup.Item><strong>Warranty:</strong> {product.warrantyInformation}</ListGroup.Item>
+              <ListGroup.Item><strong>Return Policy:</strong> {product.returnPolicy}</ListGroup.Item>
+              <ListGroup.Item><strong>Sku:</strong> {product.sku}</ListGroup.Item>
+              </ListGroup>
 
-              <div>
-                <span><span className="fw-bold">Tags: </span> </span>
+              <div className="mt-2">
+                <span><span className="fw-bold ">Tags: </span> </span>
                 {product.tags?.map((tag) => (
-                  <Badge key={tag} className="me-2" bg="secondary">
+                  <Badge key={tag} className="me-2 pb-2" bg="secondary">
                     {tag}
                   </Badge>
                 ))}

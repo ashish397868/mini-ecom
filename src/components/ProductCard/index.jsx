@@ -6,15 +6,16 @@ import { addToCart, removeFromCart } from "../../redux/cartSlice";
 import "./index.css";
 
 const ProductCard = ({ item }) => {
-  const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  const inCart = cartItems.some((ci) => ci.id === item.id);
   const discountedPrice = item.price;
   const discount = item.discountPercentage;
-  const originalPrice = +(discountedPrice / (1 - discount / 100)).toFixed(2);
+  const originalPrice = (discountedPrice / (1 - discount / 100)).toFixed(2);
+  const dispatch = useDispatch();
+
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const itemInCart = cartItems.some((cartItem) => cartItem.id === item.id);
 
   const handleCartClick = () => {
-    if (inCart) {
+    if (itemInCart) {
       dispatch(removeFromCart(item.id));
     } else {
       dispatch(addToCart(item));
@@ -33,7 +34,7 @@ const ProductCard = ({ item }) => {
           </Card.Text>
 
           <Card.Text className="mb-1">
-            <span className="fw-bold">${discountedPrice}</span> <span className="text-muted text-decoration-line-through">${originalPrice.toFixed(2)}</span> <span className="text-success fw-bold">({discount}% off)</span>
+            <span className="fw-bold">${discountedPrice}</span> <span className="text-muted text-decoration-line-through">${originalPrice}</span> <span className="text-success fw-bold">({discount}% off)</span>
           </Card.Text>
 
           <Card.Text className="product-shipping mb-3">{item.shippingInformation || "FREE Ships in 3-5 business days"}</Card.Text>
@@ -41,12 +42,8 @@ const ProductCard = ({ item }) => {
       </Link>
       <Card.Body className="pt-0">
         <div className="mt-auto">
-          <Button
-            variant={inCart ? "danger" : "warning"}
-            className="w-100 fw-semibold text-dark"
-            onClick={handleCartClick}
-          >
-            {inCart ? "Remove from cart" : "Add to cart"}
+          <Button className={`w-100 fw-semibold text-dark ${itemInCart ? "light-pink" : "btn-warning"}`} onClick={handleCartClick}>
+            {itemInCart ? "Remove from cart" : "Add to cart"}
           </Button>
         </div>
       </Card.Body>
