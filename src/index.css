@@ -1,0 +1,10 @@
+.cart-items{
+    height: 85vh;
+    overflow: hidden;
+}
+
+.custom-scroll {
+  height: 85vh;
+  overflow-y: auto;
+  padding-right: 10px; /* Optional: helps avoid clipping scrollbar content */
+}

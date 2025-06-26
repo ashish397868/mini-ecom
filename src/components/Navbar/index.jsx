@@ -11,8 +11,8 @@ function Header() {
   const cartItems = useSelector((state) => state.cart?.cartItems || []);
   const cartCount = cartItems.length;
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
-      <Container>
+    <Navbar bg="dark" data-bs-theme="dark" sticky="top">
+      <Container> 
         <Navbar.Brand as={Link} to="/">
           QuickCart
         </Navbar.Brand>
@@ -23,14 +23,14 @@ function Header() {
           <Nav.Link as={Link} to="/cart">
             Cart
           </Nav.Link>
+            {cartCount > 0 && (
           <Nav.Link as={Link} to="/cart" className="position-relative right-most">
             <FaShoppingCart size={20} />
-            {cartCount > 0 && (
               <Badge bg="primary" pill className="position-absolute top-1 start-100 translate-middle">
                 {cartCount}
               </Badge>
-            )}
           </Nav.Link>
+            )}
         </Nav>
       </Container>
     </Navbar>

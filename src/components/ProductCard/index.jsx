@@ -33,7 +33,7 @@ const ProductCard = ({ item }) => {
           </Card.Text>
 
           <Card.Text className="mb-1">
-            <span className="fw-bold">₹{discountedPrice}</span> <span className="text-muted text-decoration-line-through">₹{originalPrice.toFixed(2)}</span> <span className="text-success fw-bold">({discount}% off)</span>
+            <span className="fw-bold">${discountedPrice}</span> <span className="text-muted text-decoration-line-through">${originalPrice.toFixed(2)}</span> <span className="text-success fw-bold">({discount}% off)</span>
           </Card.Text>
 
           <Card.Text className="product-shipping mb-3">{item.shippingInformation || "FREE Ships in 3-5 business days"}</Card.Text>

@@ -11,7 +11,7 @@ const ProductList = () => {
   const { products, loading, loadingMore } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [skip, setSkip] = useState(0);
-  const limit = 10;1
+  const limit = 10;
   const maxTotal = 100;
 
   const fetchProducts = async (isInitial = false) => {
@@ -87,7 +87,7 @@ const ProductList = () => {
         </Row>
       )}
 
-      {loadingMore && (
+      {loadingMore && ( 
         <div className="loading-container">
           <ClipLoader color="#1b1a75" size={50} />
         </div>

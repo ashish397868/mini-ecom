@@ -35,6 +35,7 @@ const Index = () => {
 
   return (
     <>
+    <section id={Style.productDetails}>
       {loading ? (
         <div className="d-flex justify-content-center align-items-center" style={{ height: "80vh" }}>
           <ClipLoader color="#1b1a75" size={50} />
@@ -44,7 +45,7 @@ const Index = () => {
           <div id={Style.container}>
             <div className={Style.left}>
               {product.images?.length > 1 ? (
-                <Carousel>
+                <Carousel variant="dark">
                   {product.images.map((img, index) => (
                     <Carousel.Item key={index}>
                       <img className={Style.productImg} src={img} alt={`Slide ${index}`} />
@@ -103,7 +104,7 @@ const Index = () => {
 
           {/* Customer Reviews */}
           {product.reviews?.length > 0 && (
-            <div className="mt-5 px-4">
+            <div className="mt-5 px-4 pb-4">
               <h4 className="mb-4">
                 <RiSpeakAiFill className="me-2 text-primary" /> Customer Reviews
               </h4>
@@ -129,6 +130,7 @@ const Index = () => {
           )}
         </>
       ) : null}
+    </section>
     </>
   );
 };
